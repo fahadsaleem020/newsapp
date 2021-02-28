@@ -1,0 +1,20 @@
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 20px;
+  box-shadow: 0 3px 10px lightgray;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.navContainer ul {
+  list-style: none;
+  display: flex;
+}
+.navContainer ul li {
+  margin: 0 5px;
+}
+.navContainer div:first-child {
+  font-size: 30px;
+  font-weight: bolder;
+  color: rgb(45, 45, 129);
+}

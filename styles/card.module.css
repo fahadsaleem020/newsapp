@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+}
+.card div {
+  cursor: pointer;
+  margin: 15px 10px 0 0;
+  width: 400px;
+  border-radius: 10px;
+}
+.card div:hover {
+  box-shadow: 0 3px 10px lightgray;
+}
+.card img {
+  height: 200px;
+  border-radius: 5px;
+}
+.card h1 {
+  font-size: 20px;
+  padding: 3px 12px;
+}
+.card p {
+  font-size: 15px;
+  padding: 10px 12px;
+}
