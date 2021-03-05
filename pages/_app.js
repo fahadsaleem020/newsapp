@@ -1,6 +1,4 @@
-import "../styles/globals.css";
 import Layout from "../components/Layout";
-import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -8,7 +6,6 @@ function MyApp({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-      <Footer />
     </>
   );
 }
