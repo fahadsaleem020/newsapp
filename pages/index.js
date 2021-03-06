@@ -1,13 +1,13 @@
 import Axios from "axios";
 
-export default function Home({ data }) {
-  return <>{data}</>;
+export default function Home() {
+  return <>hello world</>;
 }
 
 export async function getStaticProps() {
   return {
     props: {
-      data: process.env.data,
+      data: "hello world",
     },
     revalidate: 5,
   };
