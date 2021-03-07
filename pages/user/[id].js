@@ -1,11 +1,11 @@
+import axios from "axios";
 import Link from "next/link";
-import getUsers from "../api/getUsers/index";
 
-function user({ data }) {
+function user({ user }) {
   return (
     <div>
-      {data &&
-        data.map((val, i) => (
+      {user &&
+        user.map((val, i) => (
           <div
             key={i}
             style={{
@@ -14,12 +14,11 @@ function user({ data }) {
               padding: "10px",
             }}
           >
-            <p> {val[0].id} </p>
-            <p> {val[0].name} </p>
-            <p> {val[0].email} </p>
+            <p> {val.id} </p>
+            <p> {val.name} </p>
+            <p> {val.email} </p>
           </div>
         ))}
-
       <div style={{ padding: "10px" }}>
         <Link href="/"> go back</Link>
       </div>
@@ -28,27 +27,25 @@ function user({ data }) {
 }
 
 export async function getStaticPaths() {
-  const data = await getUsers();
-  const paths = data.map((val) => ({
-    params: { id: val.id.toString() },
-  }));
+  let res = await (
+    await axios.get("https://jsonplaceholder.typicode.com/users")
+  ).data;
+  let paths = res.map((val) => ({ params: { id: val.id.toString() } }));
 
   return {
-    paths,
+    paths: paths,
     fallback: true,
   };
 }
 
 export async function getStaticProps({ params }) {
-  let data = await getUsers();
-  data = data.filter((val) => val.id === parseInt(params.id));
-  const users = data.map((val) => [
-    { id: val.id, name: val.name, email: val.email },
-  ]);
-
+  let res = await (
+    await axios.get("https://jsonplaceholder.typicode.com/users")
+  ).data;
+  let user = res.filter((val) => val.id === parseInt(params.id));
   return {
     props: {
-      data: users,
+      user: user,
     },
   };
 }

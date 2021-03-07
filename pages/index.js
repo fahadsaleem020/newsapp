@@ -1,5 +1,5 @@
+import axios from "axios";
 import Link from "next/link";
-import getusers from "./api/getUsers/index";
 
 export default function Home({ data }) {
   return (
@@ -30,7 +30,9 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  let data = await getusers();
+  let data = await (
+    await axios.get("https://jsonplaceholder.typicode.com/users")
+  ).data;
 
   return {
     props: {
