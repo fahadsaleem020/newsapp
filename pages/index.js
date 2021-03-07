@@ -6,7 +6,7 @@ export default function Home({ data }) {
     <>
       {data &&
         data.map((val, i) => (
-          <Link href="/user/" as={`/user/${val.id}`} key={i}>
+          <Link href="/user/[id]" as={`/user/${val.id}`} key={i}>
             <div
               style={{
                 border: "1px solid black",
